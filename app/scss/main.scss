@@ -1,0 +1,22 @@
+body {
+  background-color: #fff;
+}
+
+.pinned-content {
+  height: 1000px;
+  padding: 40px;
+
+
+  //this just means the .pinned-content element which also has the class name "first"
+  &.first {
+    background-color: #f9d9d9;
+  }
+
+  &.second {
+    background-color: #d9e6f9;
+  }
+
+  &.third {
+    background-color: #d9f9db;
+  }
+}
