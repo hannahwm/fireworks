@@ -2,6 +2,19 @@
   position: relative;
   height: 100vh;
   overflow: hidden;
+  padding: 40px 0 0;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 40px;
+    width: 100%;
+    background: url("/interactive/2018/07/4thOfJuly/dist/images/border.svg") repeat;
+    border-bottom: 0;
+  }
 }
 
 #parallaxText {
@@ -26,8 +39,18 @@
     .layer2 {
       z-index: 0;
       padding-bottom: 100vh;
-      background: url("/images/boston-skyline.jpg") no-repeat top center;
-      background-size: cover;
+      background: url("/interactive/2018/07/4thOfJuly/dist/images/boston-skyline.jpg") no-repeat bottom left 70% #000;
+      background-size: 400vw auto;
+
+      @media screen and (min-width: 400px) {
+        background: url("/interactive/2018/07/4thOfJuly/dist/images/boston-skyline.jpg") no-repeat bottom left 70% #000;
+        background-size: 300vw auto;
+      }
+
+      @media screen and (min-width: 768px) {
+        background: url("/interactive/2018/07/4thOfJuly/dist/images/boston-skyline.jpg") no-repeat bottom center #000;
+        background-size: cover;
+      }
     }
 
     .layer1 {
@@ -40,6 +63,7 @@
 
 .rockets {
   position: absolute;
+  display: flex;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -50,11 +74,127 @@
 .rocket {
   position: relative;
   display: inline-block;
+  width: 16.666%;
+  flex-basis: 16.666%;
+  flex-grow: 6;
+
+  @media screen and (max-width: 768px) {
+    &:nth-child(n+4) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    &:nth-child(n+5) {
+      display: none;
+    }
+  }
+
+  > br,
+  > p {
+    display: none;
+  }
+
+  img {
+    position: absolute;
+    left: calc(50% - 31vh);
+    bottom: -4vh;
+    height: 100%;
+    width: 56.549vh;
+    max-width: none;
+    outline: none;
+  }
+}
+
+.rocket__static {
+  position: relative;
+  z-index: -1;
+  outline: none;
 }
 
 .rocket__animated {
   position: absolute;
-  top: 0;
-  left: 0;
+  z-index: -1;
   display: none;
+  left: 0;
+  bottom: -4vh;
+  outline: none;
+
+  img {
+    position: absolute;
+    left: calc(50% - 31vh);
+    outline: none;
+  }
+}
+
+.rocket-text {
+  position: absolute;
+  display: block;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  text-align: center;
+  top: 150px;
+  font-family: 'akkurat';
+  font-size: 24px;
+  line-height: 1.5em;
+  color: #fff;
+
+  @media screen and (min-width: 1200px) {
+    font-size: 36px;
+  }
+}
+
+.metal {
+  position: absolute;
+  bottom: 115px;
+  left: 50%;
+  font-family: 'akkurat';
+  height: 35px;
+  width: 35px;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 5px;
+  display: inline-block;
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: #000;
+
+  @media screen and (min-width: 768px) {
+    left: calc(50% + 15px);
+    height: 45px;
+    width: 45px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  @media screen and (min-width: 1084px) {
+    left: calc(50% + 15px);
+    height: 55px;
+    width: 55px;
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  &__number {
+    display: block;
+    font-size: 9px;
+    line-height: 9px;
+
+    @media screen and (min-width: 1084px) {
+      font-size: 11px;
+      line-height: 11px;
+    }
+  }
+
+  &__name {
+    display: block;
+    font-size: 7px;
+    line-height: 7px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 9px;
+      line-height: 9px;
+    }
+  }
 }

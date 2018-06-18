@@ -30,6 +30,8 @@
     "gulp-html-beautify": "^1.0.1",
     "gulp-htmlmin": "^4.0.0",
     "gulp-notify": "^3.2.0",
-    "gulp-rename": "^1.2.2"
+    "gulp-order": "^1.1.1",
+    "gulp-rename": "^1.2.2",
+    "mapbox-gl": "^0.46.0-beta.1"
   }
 }

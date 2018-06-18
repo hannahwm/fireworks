@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>GreenSock: Basic Tween</title>
+    <title>4th of July</title>
     <link rel="stylesheet" href="css/styles.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://news.northeastern.edu/viz-libraries/leaflet.js"></script>
+    <script src="https://news.northeastern.edu/viz-libraries/crossfilter.js"></script>
+    <script src="https://news.northeastern.edu/viz-libraries/d3.min.js"></script>
+    <script src="https://news.northeastern.edu/viz-libraries/queue.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/library/mapbox-gl.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.1/ScrollMagic.js"></script>
     <script src="js/library/jquery.gsap.min.js"></script>
     <script src="js/library/TweenMax.min.js"></script>
@@ -19,40 +26,108 @@
 
   <div class="wrapper">
 
-    <div class="pinned-content first">
-      <p>slide: pinned-content first</p>
-    </div>
+    <!-- <div class="pinned-content first">
+      <p>Intro slide?</p>
+    </div> -->
 
     <div class="pinned-content second">
-      <p>slide: pinned-content second</p>
+      <h2>The history of fireworks</h2>
     </div>
 
     <div class="pinned-content third">
-      <p>slide: pinned-content third</p>
+      <h2>How are fireworks made and how do they work?</h2>
+      <p class="firework-info-text">Aerial fireworks are usually manufactured as a shell that is made up of four parts. The container consists of pasted paper. A timed fuse allows the shell to reach the desired altitude before exploding. A bursting charge made of black powder (like a firecracker) is at the center of the shell. Around the black powder are "stars" in various patterns. These contain metals such as copper, barium and strontium which provide the colors of the fireworks</p>
+      <div class="firework-info">
+        <img src="/interactive/2018/07/4thOfJuly/dist/images/info.svg" alt="How are fireworks made" />
+      </div>
     </div>
 
-    <div id="parallaxWrapper">
+    <div id="parallaxWrapper" class="pinned-content">
       <div id="parallaxText">
         <div class="layer2" style="top: 0;"></div>
       	<div class="layer1" style="top: 100vh;">
+          <div class="rocket-text">Can you guess which metal creates which color?</div>
           <ul class="rockets">
             <li class="rocket">
-              <img class="rocket__static" src="/images/firework.png" />
-              <img class="rocket__animated" src="/images/firework.gif" />
-          </li>
+              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework-red.png" />
+              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-red.gif" />
+              <div class="metal"><span class="metal__number">38</span>Sr<span class="metal__name">Strontium</span></div>
+            </li>
             <li class="rocket">
-              <img class="rocket__static" src="/images/firework-yellow.png" />
-              <img class="rocket__animated" src="/images/firework-yellow.gif" />
+              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework-yellow.png" />
+              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-yellow.gif" />
+              <div class="metal"><span class="metal__number">11</span>Na<span class="metal__name">Sodium</span></div>
+            </li>
+            <li class="rocket">
+              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework-green.png" />
+              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-green.gif" />
+              <div class="metal"><span class="metal__number">56</span>Ba<span class="metal__name">Barium</span></div>
+            </li>
+            <li class="rocket">
+              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework.png" />
+              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework.gif" />
+              <div class="metal"><span class="metal__number">11</span>Al<span class="metal__name">Aluminium</span></div>
+            </li>
+            <li class="rocket">
+              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework-blue.png" />
+              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-blue.gif" />
+              <div class="metal"><span class="metal__number">29</span>Cu<span class="metal__name">Copper</span></div>
+            </li>
+            <li class="rocket">
+              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework-orange.png" />
+              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-orange.gif" />
+              <div class="metal"><span class="metal__number">20</span>Ca<span class="metal__name">Calcium</span></div>
             </li>
           </ul>
         </div>
       </div>
     </div>
+
+    <div class="pinned-content">
+      <h2>Where to watch 4th of July fireworks in and around Boston</h2>
+      <div class="map-container">
+        <div id="fireworksMap"></div>
+        <div id="list-container"></div>
+      </div>
+    </div>
+
+    <!-- <div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas, justo vitae posuere maximus, velit sapien porttitor dui, sed ornare nisl purus a enim. Morbi luctus pharetra justo, ut faucibus sapien gravida eleifend. Nullam ante sapien, hendrerit in posuere eu, blandit egestas diam. Aliquam euismod ante vel accumsan varius. Integer lacinia malesuada quam in malesuada. Phasellus fermentum leo ultrices, pulvinar dolor ut, cursus magna. Suspendisse ullamcorper sem in orci ornare, nec rutrum ante ultrices. Mauris ultricies cursus ex, sit amet venenatis felis vestibulum non.</p>
+
+      <p>Nulla lacinia lorem et mi pellentesque egestas. Mauris in posuere orci, ut dignissim lacus. Ut nec tincidunt lorem, non imperdiet mi. Phasellus accumsan vulputate venenatis. Suspendisse ac velit vel risus volutpat rutrum. Curabitur dictum aliquam nisi, vitae interdum sem condimentum quis. Nam aliquet posuere mauris, id ultrices nibh tempor a. Vestibulum auctor erat eget leo interdum, vitae dignissim arcu commodo. Nulla convallis est et elementum luctus. Ut sem enim, efficitur eget iaculis vel, sagittis fermentum odio.</p>
+
+      <p>Mauris lorem lorem, mattis id ante ut, dictum viverra enim. Proin accumsan ligula enim, sed venenatis felis ullamcorper ut. Sed vitae ligula ligula. Morbi rhoncus augue in dignissim venenatis. Duis mollis turpis ligula, eu viverra urna dignissim id. Donec magna felis, porttitor nec velit et, sodales posuere est. Nulla euismod, tortor eu aliquam consectetur, eros magna condimentum massa, vel ultricies mauris libero at felis.</p>
+
+      <p>Proin accumsan est sed nunc sollicitudin dictum. Vivamus non fringilla nisi. Praesent nec ligula dui. Donec non convallis enim, blandit interdum libero. Pellentesque sodales sem ullamcorper leo viverra mattis. Curabitur suscipit auctor nunc, at scelerisque tortor efficitur eget. Curabitur tincidunt, risus quis auctor interdum, massa sem venenatis odio, semper imperdiet justo felis eu ligula. Quisque a sollicitudin leo. Proin quis tortor mauris. Aenean ac mi vehicula, pretium sem maximus, tristique diam. In a lacus fringilla, semper sapien quis, sollicitudin lorem. Etiam feugiat neque vitae mauris hendrerit, a facilisis nunc rhoncus. Fusce ut magna ipsum.</p>
+
+      <p>Sed lobortis ante quam, in vestibulum tellus porta in. Nulla sed dolor eu mauris maximus finibus eget vel magna. Proin id sem elementum, fringilla sapien sed, vestibulum quam. Nullam dapibus sem id dui eleifend facilisis. Sed ac faucibus ante. Sed luctus maximus commodo. Aliquam lectus ante, scelerisque quis ligula a, vestibulum tincidunt est.</p>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas, justo vitae posuere maximus, velit sapien porttitor dui, sed ornare nisl purus a enim. Morbi luctus pharetra justo, ut faucibus sapien gravida eleifend. Nullam ante sapien, hendrerit in posuere eu, blandit egestas diam. Aliquam euismod ante vel accumsan varius. Integer lacinia malesuada quam in malesuada. Phasellus fermentum leo ultrices, pulvinar dolor ut, cursus magna. Suspendisse ullamcorper sem in orci ornare, nec rutrum ante ultrices. Mauris ultricies cursus ex, sit amet venenatis felis vestibulum non.</p>
+
+      <p>Nulla lacinia lorem et mi pellentesque egestas. Mauris in posuere orci, ut dignissim lacus. Ut nec tincidunt lorem, non imperdiet mi. Phasellus accumsan vulputate venenatis. Suspendisse ac velit vel risus volutpat rutrum. Curabitur dictum aliquam nisi, vitae interdum sem condimentum quis. Nam aliquet posuere mauris, id ultrices nibh tempor a. Vestibulum auctor erat eget leo interdum, vitae dignissim arcu commodo. Nulla convallis est et elementum luctus. Ut sem enim, efficitur eget iaculis vel, sagittis fermentum odio.</p>
+
+      <p>Mauris lorem lorem, mattis id ante ut, dictum viverra enim. Proin accumsan ligula enim, sed venenatis felis ullamcorper ut. Sed vitae ligula ligula. Morbi rhoncus augue in dignissim venenatis. Duis mollis turpis ligula, eu viverra urna dignissim id. Donec magna felis, porttitor nec velit et, sodales posuere est. Nulla euismod, tortor eu aliquam consectetur, eros magna condimentum massa, vel ultricies mauris libero at felis.</p>
+
+      <p>Proin accumsan est sed nunc sollicitudin dictum. Vivamus non fringilla nisi. Praesent nec ligula dui. Donec non convallis enim, blandit interdum libero. Pellentesque sodales sem ullamcorper leo viverra mattis. Curabitur suscipit auctor nunc, at scelerisque tortor efficitur eget. Curabitur tincidunt, risus quis auctor interdum, massa sem venenatis odio, semper imperdiet justo felis eu ligula. Quisque a sollicitudin leo. Proin quis tortor mauris. Aenean ac mi vehicula, pretium sem maximus, tristique diam. In a lacus fringilla, semper sapien quis, sollicitudin lorem. Etiam feugiat neque vitae mauris hendrerit, a facilisis nunc rhoncus. Fusce ut magna ipsum.</p>
+
+      <p>Sed lobortis ante quam, in vestibulum tellus porta in. Nulla sed dolor eu mauris maximus finibus eget vel magna. Proin id sem elementum, fringilla sapien sed, vestibulum quam. Nullam dapibus sem id dui eleifend facilisis. Sed ac faucibus ante. Sed luctus maximus commodo. Aliquam lectus ante, scelerisque quis ligula a, vestibulum tincidunt est.</p>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas, justo vitae posuere maximus, velit sapien porttitor dui, sed ornare nisl purus a enim. Morbi luctus pharetra justo, ut faucibus sapien gravida eleifend. Nullam ante sapien, hendrerit in posuere eu, blandit egestas diam. Aliquam euismod ante vel accumsan varius. Integer lacinia malesuada quam in malesuada. Phasellus fermentum leo ultrices, pulvinar dolor ut, cursus magna. Suspendisse ullamcorper sem in orci ornare, nec rutrum ante ultrices. Mauris ultricies cursus ex, sit amet venenatis felis vestibulum non.</p>
+
+      <p>Nulla lacinia lorem et mi pellentesque egestas. Mauris in posuere orci, ut dignissim lacus. Ut nec tincidunt lorem, non imperdiet mi. Phasellus accumsan vulputate venenatis. Suspendisse ac velit vel risus volutpat rutrum. Curabitur dictum aliquam nisi, vitae interdum sem condimentum quis. Nam aliquet posuere mauris, id ultrices nibh tempor a. Vestibulum auctor erat eget leo interdum, vitae dignissim arcu commodo. Nulla convallis est et elementum luctus. Ut sem enim, efficitur eget iaculis vel, sagittis fermentum odio.</p>
+
+      <p>Mauris lorem lorem, mattis id ante ut, dictum viverra enim. Proin accumsan ligula enim, sed venenatis felis ullamcorper ut. Sed vitae ligula ligula. Morbi rhoncus augue in dignissim venenatis. Duis mollis turpis ligula, eu viverra urna dignissim id. Donec magna felis, porttitor nec velit et, sodales posuere est. Nulla euismod, tortor eu aliquam consectetur, eros magna condimentum massa, vel ultricies mauris libero at felis.</p>
+
+      <p>Proin accumsan est sed nunc sollicitudin dictum. Vivamus non fringilla nisi. Praesent nec ligula dui. Donec non convallis enim, blandit interdum libero. Pellentesque sodales sem ullamcorper leo viverra mattis. Curabitur suscipit auctor nunc, at scelerisque tortor efficitur eget. Curabitur tincidunt, risus quis auctor interdum, massa sem venenatis odio, semper imperdiet justo felis eu ligula. Quisque a sollicitudin leo. Proin quis tortor mauris. Aenean ac mi vehicula, pretium sem maximus, tristique diam. In a lacus fringilla, semper sapien quis, sollicitudin lorem. Etiam feugiat neque vitae mauris hendrerit, a facilisis nunc rhoncus. Fusce ut magna ipsum.</p>
+
+      <p>Sed lobortis ante quam, in vestibulum tellus porta in. Nulla sed dolor eu mauris maximus finibus eget vel magna. Proin id sem elementum, fringilla sapien sed, vestibulum quam. Nullam dapibus sem id dui eleifend facilisis. Sed ac faucibus ante. Sed luctus maximus commodo. Aliquam lectus ante, scelerisque quis ligula a, vestibulum tincidunt est.</p>
+    </div> -->
   </div>
 
   <!--build:js js/main.min.js -->
-  <script src="js/plugins/scrollmagicControls.js"></script>
   <script src="js/plugins/launchRocket.js"></script>
+  <script src="js/plugins/fireworksMap.js"></script>
+  <script src="js/plugins/scrollmagicControls.js"></script>
   <!--endbuild-->
 
 </body>

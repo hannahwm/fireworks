@@ -15,6 +15,7 @@ var cache = require('gulp-cache');
 var strip = require('gulp-strip-comments');
 var htmlbeautify = require('gulp-html-beautify');
 var autoprefixer = require('gulp-autoprefixer');
+var order = require('gulp-order');
 
 gulp.task('sass', function() {
   return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss
@@ -40,6 +41,10 @@ gulp.task('sass', function() {
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
     return gulp.src('app/js/plugins/**/*.js')
+        .pipe(order([
+          'app/js/plugins/scrollmagicControls.js',
+          'app/js/plugins/launchRocket.js'
+        ], {base: __dirname}))
         .pipe(concat('main.js'))
         .pipe(gulp.dest('app/js'))
         .pipe(rename('main.min.js'))
@@ -60,10 +65,19 @@ gulp.task('copyJSLibraries', function() {
     .pipe( notify({ message: "js libraries have been moved to dist!"}) );
 });
 
+gulp.task('copyData', function() {
+  return gulp.src('app/data/**/*.csv')
+    .pipe(gulp.dest('dist/interactive/2018/07/4thOfJuly/dist/data'))
+    .pipe(browserSync.reload({
+      stream: true
+    }))
+    .pipe( notify({ message: "data files have been moved to dist!"}) );
+});
+
 gulp.task('images', function(){
   return gulp.src('app/images/**/*.+(png|jpg|jpeg|gif|svg)')
   .pipe(cache(imagemin()))
-  .pipe(gulp.dest('dist/images'))
+  .pipe(gulp.dest('dist/interactive/2018/07/4thOfJuly/dist/images'))
   .pipe(browserSync.reload({
     stream: true
   }))
@@ -113,11 +127,12 @@ gulp.task('fileinclude', function() {
     .pipe( notify({ message: "fileInclude tasks have been completed!"}) );
 });
 
-gulp.task('watch', ['browserSync', 'sass', 'scripts', 'copyJSLibraries', 'images', 'images2', 'fileinclude', 'html'], function (){
+gulp.task('watch', ['browserSync', 'sass', 'scripts', 'copyJSLibraries', 'copyData', 'images', 'images2', 'fileinclude', 'html'], function (){
   gulp.watch('app/scss/**/*.scss', ['sass']);
   gulp.watch('app/**/*.html', ['fileinclude']);
   gulp.watch('app/js/plugins/**/*.js', ['scripts']);
   gulp.watch('app/js/library/**/*.js', ['copyJSLibraries']);
+  gulp.watch('app/data/**/*.csv', ['copyData']);
   gulp.watch('app/images/**/*', ['images', 'images2']);
 });
 
@@ -134,7 +149,7 @@ gulp.task('clean:dist', function() {
 
 
 gulp.task('default', function (callback) {
-  runSequence(['clean:dist', 'sass', 'images', 'images2', 'fileinclude', 'scripts', 'copyJSLibraries', 'useref', 'html', 'browserSync', 'watch'],
+  runSequence(['clean:dist', 'sass', 'images', 'images2', 'fileinclude', 'scripts', 'copyJSLibraries', 'copyData', 'useref', 'html', 'browserSync', 'watch'],
     callback
   )
 })
@@ -148,6 +163,7 @@ gulp.task('build', function (callback) {
     'fileinclude',
     'scripts',
     'copyJSLibraries',
+    'copyData',
     'html',
     callback
   )

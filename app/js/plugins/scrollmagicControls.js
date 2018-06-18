@@ -1,4 +1,5 @@
 var $ = jQuery;
+// var ScrollMagic = bundleLib.run();
 
 ( function( $ ) {
   var Neu = Neu || {};
@@ -69,13 +70,19 @@ var $ = jQuery;
 
       //Parallax scene
       // build tween
+      var calcOffset = $(window).height() / 2;
+      var offset = "-" + calcOffset + "px";
       var tween = new TimelineMax ()
       .add([
-        TweenMax.fromTo("#parallaxText .layer1", 1, {top: "50vh"}, {top: "-25vh", ease: Linear.easeNone}),
+        TweenMax.fromTo("#parallaxText .layer1", 1, {top: "70vh"}, {top: 0, ease: Linear.easeNone}),
       ]);
 
       // build scene
-      var scene = new ScrollMagic.Scene({triggerElement: "#parallaxWrapper", duration: $(window).height()})
+      var scene = new ScrollMagic.Scene({
+        triggerElement: "#parallaxWrapper",
+        duration: $(window).height(),
+        offset: offset
+      })
       .setTween(tween)
       .addTo(self.controller);
 
