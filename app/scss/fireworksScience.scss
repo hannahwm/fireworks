@@ -1,0 +1,235 @@
+
+#fireworksScience {
+  position: relative;
+  color: #fff;
+  font-family: "akkurat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5em;
+  height: 300vh;
+  background-color: transparent;
+  padding: 50px 40px 40px;
+
+  @media screen and (min-width: 768px) {
+    padding: 100px 40px 40px;
+    background: -moz-radial-gradient(center, ellipse cover, rgba(45,45,45,1) 0%, rgba(0,0,0,0.04) 80%, rgba(0,0,0,0) 83%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(45,45,45,1) 0%,rgba(0,0,0,0.04) 80%,rgba(0,0,0,0) 83%);
+    background: radial-gradient(ellipse at center, rgba(45,45,45,1) 0%,rgba(0,0,0,0.04) 80%,rgba(0,0,0,0) 83%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2d2d2d', endColorstr='#00000000',GradientType=1 );
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 20px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 40px;
+    width: 100%;
+    background: url("/interactive/2018/07/4thOfJuly/dist/images/border.svg") repeat;
+    border-bottom: 0;
+  }
+
+  &:after {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    content: url("/interactive/2018/07/4thOfJuly/dist/images/spark.svg");
+    width: 50px;
+
+    @media screen and (min-width: 768px) {
+      width: 100px;
+    }
+  }
+
+  h2 {
+    width: calc(100% - 50px);
+    padding-right: 50px;
+
+    @media screen and (min-width: 768px) {
+      width: calc(100% - 200px);
+      padding-right: 200px;
+    }
+
+    @media screen and (min-width: 1400px) {
+      width: 100%;
+    }
+  }
+}
+
+.firework-contraint {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.science-pinned {
+  box-sizing: border-box;
+  height: 200vh;
+}
+
+.firework-info {
+  position: relative;
+  width: 81.027vh;
+  height: 45vh;
+  margin: 50px auto;
+  text-align: center;
+  box-sizing: border-box;
+
+  @media screen and (min-width: 768px) {
+    margin: 100px auto;
+  }
+
+  img {
+    height: 100%;
+    max-width: none;
+    max-height: 100%;
+  }
+}
+
+.firework-info-text {
+  width: calc(100% - 50px);
+  margin-bottom: 50px;
+  padding-right: 50px;
+
+  @media screen and (min-width: 768px) {
+    width: calc(100% - 200px);
+    padding-right: 200px;
+    margin-bottom: 100px;
+  }
+
+  @media screen and (min-width: 1400px) {
+    width: 100%;
+  }
+}
+
+.scienceTrigger {
+  opacity: 0;
+}
+
+.science-info {
+  display: none;
+  position: absolute;
+
+  h3 {
+    margin: 0;
+    font-family: "Helvetica Neue";
+    font-weight: 300;
+    font-style: italic;
+    font-size: 28px;
+  }
+
+  .circle {
+    position: absolute;
+    display: block;
+    width: 9px;
+    height: 9px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    line-height: 0;
+    font-size: 0;
+  }
+
+  .line {
+    position: absolute;
+    display: block;
+    border-top: 3px solid #fff;
+  }
+}
+
+.science-info1 {
+  background: url("/interactive/2018/07/4thOfJuly/dist/images/mortar.svg") no-repeat;
+  background-size: contain;
+  width: 16.7%;
+  height: 15%;
+  top: 7.5%;
+  left: 60.5%;
+}
+
+.science-info2 {
+  background: url("/interactive/2018/07/4thOfJuly/dist/images/shell.svg") no-repeat;
+  background-size: contain;
+  width: 24.3%;
+  height: 33%;
+  top: 8%;
+  left: 12%;
+}
+
+.science-info3 {
+  background: url("/interactive/2018/07/4thOfJuly/dist/images/stars.svg") no-repeat;
+  background-size: contain;
+  width: 36.3%;
+  height: 26%;
+  top: 35%;
+  left: 0;
+}
+
+.science-info4 {
+  background: url("/interactive/2018/07/4thOfJuly/dist/images/timed-fuse.svg") no-repeat;
+  background-size: contain;
+  width: 45.3%;
+  height: 26%;
+  top: 68%;
+  left: 0;
+}
+
+.science-info5 {
+  background: url("/interactive/2018/07/4thOfJuly/dist/images/bursting.svg") no-repeat;
+  background-size: contain;
+  width: 48.3%;
+    height: 26%;
+    top: 34%;
+    left: 51.6%;
+}
+
+.science-info6 {
+  background: url("/interactive/2018/07/4thOfJuly/dist/images/lifting.svg") no-repeat;
+  background-size: contain;
+  width: 42%;
+  height: 26%;
+  top: 59%;
+  left: 47%;
+}
+
+.science-info7 {
+  background: url("/interactive/2018/07/4thOfJuly/dist/images/fuse-text.svg") no-repeat;
+  background-size: contain;
+  width: 16%;
+  height: 15.8%;
+  top: 84.7%;
+  left: 66.3%;
+}
+
+#science1,
+#science2,
+#science3,
+#science4,
+#science5,
+#science6,
+#science7 {
+  position: absolute;
+  color: #fff;
+}
+#science1 {
+  top: 30%;
+}
+#science2 {
+  top: 38%;
+}
+#science3 {
+  top: 46%;
+}
+#science4 {
+  top: 54%;
+}
+#science5 {
+  top: 62%;
+}
+#science6 {
+  top: 70%;
+}
+#science7 {
+  top: 80%;
+}

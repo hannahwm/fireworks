@@ -390,7 +390,7 @@ function fillInfo(this_, d){
     mapboxgl.accessToken = 'pk.eyJ1IjoiaGFtb29yZSIsImEiOiJjamlrOWRwb2gyMnMzM2twbmIwaHdqbXl4In0.ehm9IfxQZGtrgVaSIP6ZCA';
     map = new mapboxgl.Map({
        container: 'fireworksMap',
-       style: 'mapbox://styles/hamoore/cjikd3tpx3e2k2spiw399kz70',
+       style: 'mapbox://styles/mapbox/dark-v9',
        center: [centerxy[0], centerxy[1]],
        zoom: defZoom,
     });

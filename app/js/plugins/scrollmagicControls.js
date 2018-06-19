@@ -1,5 +1,5 @@
 var $ = jQuery;
-// var ScrollMagic = bundleLib.run();
+var ScrollMagic = bundleLib.run();
 
 ( function( $ ) {
   var Neu = Neu || {};
@@ -12,7 +12,8 @@ var $ = jQuery;
   };
 
   $.fn.scrollmagicControls.options = {
-      pinned: ".pinned-content"
+      pinned: ".pinned-content",
+      scienceTrigger: ".scienceTrigger"
   };
 
   Neu.scrollmagicControls = {
@@ -31,7 +32,9 @@ var $ = jQuery;
         var self = this;
 
         self.$pinned = self.$container.find(self.options.pinned);
+        self.$scienceTrigger = self.$container.find(self.options.scienceTrigger);
         self.controller = new ScrollMagic.Controller();
+        self.controller2 = new ScrollMagic.Controller();
         self.parallaxController = new ScrollMagic.Controller({vertical: false});
     },
     bindEvents: function() {
@@ -87,25 +90,55 @@ var $ = jQuery;
       .addTo(self.controller);
 
       //if you want a function to only run for a specific slide, you can use the function below.
-      // var customScene = new ScrollMagic.Scene({
-      //   triggerElement: "#customScene",
-      //   duration: 1000,
+      // var fireworksScience = new ScrollMagic.Scene({
+      //   triggerElement: "#fireworksScience",
+      //   duration: 200,
       //   reverse: true
       // })
-      // .setClassToggle("#customScene", "custom-active")
+      // .setClassToggle("fireworksScience-active")
       // .on("enter", function() {
-      //   $(".box").animate({
-      //     height: "300px",
-      //     width: "400"
-      //   });
+      //
       // })
       // .on("leave", function() {
-      //   $(".box").animate({
-      //     height: "150px",
-      //     width: "200"
-      //   });
+      //
       // })
       // .addTo(self.controller);
+
+      $("#fireworksScience").each(function() {
+        var slide = ".science-pinned";
+        var duration2 = $(window).height() * 4;
+
+        var scienceScene = new ScrollMagic.Scene({
+          triggerElement: slide,
+          duration: duration2,
+          triggerHook: 0,
+					reverse: true
+        })
+        .setPin(slide)
+        .addTo(self.controller);
+      });
+
+
+      for (var i=0; i<self.$scienceTrigger.length; i++) {
+        var triggerEl = self.$scienceTrigger[i];
+
+        new ScrollMagic.Scene({triggerElement: triggerEl})
+        .on("enter", function() {
+          var trigger = this.triggerElement();
+          var id = $(trigger).attr("id").replace(/science/, '');
+          var target = ".science-info" + id;
+
+          $(target).fadeIn();
+        })
+        .on("leave", function() {
+          var trigger = this.triggerElement();
+          var id = $(trigger).attr("id").replace(/science/, '');
+          var target = ".science-info" + id;
+
+          $(target).fadeOut();
+        })
+        .addTo(self.controller2);
+      };
     }
   };
 
@@ -113,6 +146,6 @@ var $ = jQuery;
 
 (function init () {
   $(document).ready(function() {
-    $(".wrapper").scrollmagicControls();
+    $(".fireworksWrapper").scrollmagicControls();
   });
 })();
