@@ -1,5 +1,5 @@
 var $ = jQuery;
-// var ScrollMagic = bundleLib.run();
+var ScrollMagic = bundleLib.run();
 
 ( function( $ ) {
   var Neu = Neu || {};
@@ -230,11 +230,11 @@ var $ = jQuery;
 
 }( $ ) );
 
-(function init () {
-  $(document).ready(function() {
-    $(".fireworksWrapper").scrollmagicControls();
-  });
-})();
+// (function init () {
+//   $(document).ready(function() {
+//     $(".fireworksWrapper").scrollmagicControls();
+//   });
+// })();
 
 var $ = jQuery;
 
@@ -316,8 +316,78 @@ var $ = jQuery;
 
 }( $ ) );
 
-(function init () {
-  $(document).ready(function() {
+// (function init () {
+//   $(document).ready(function() {
+//     $(".rockets").launchRocket();
+//   });
+// })();
+
+
+/************************* // SAFARI STUFF // *************************************/
+
+//script to reload the page in Safari since it often loads things in the wrong order
+
+if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+
+	//set cookie to make sure that the page is only reloaded once
+	function setCookie(cname, cvalue, exdays) {
+		var now = new Date();
+		var time = now.getTime();
+		time += 60 * 1000;
+		now.setTime(time);
+
+		var expires = "expires="+now.toUTCString();
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+
+	//delete cookie
+  var delete_cookie = function(name) {
+    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  };
+
+	//check if cookie is set
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  var reloadedCookie = getCookie("reloaded");
+	//if the cookie exists it means that the page has already been reloaded within the last minute, so we don't need to do it again and we can just call the normal functions.
+  if (reloadedCookie != "") {
+    $(document).ready(function(){
+			console.log("cookie already set");
+      //call your functions
+      $(".fireworksWrapper").scrollmagicControls();
+      $(".rockets").launchRocket();
+		});
+	} else {
+		//otherwise set the cookie and reload the page.
+    setTimeout( function() {
+      var url = window.location.href;
+      setCookie("reloaded", "true", 365);
+      location.href = url;
+
+      console.log("set cookie");
+
+    }, 1000);
+  }
+
+} else {
+	//if it is not Safari then just load the page normally
+	$(document).ready(function(){
+    console.log("not Safari");
+    //call your functions
+    $(".fireworksWrapper").scrollmagicControls();
     $(".rockets").launchRocket();
-  });
-})();
+	});
+}

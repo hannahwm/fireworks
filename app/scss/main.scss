@@ -3,37 +3,213 @@ body {
   margin: 0;
 }
 
-.scrollmagic-pin-spacer {
-  &:nth-of-type(2) {
-
-
-
-    &:before {
-      position: absolute;
-      top: 40px;
-      right: -14px;
-      display: block;
-      content: "";
-      width: 170px;
-      height: 100%;
-      background: url("/interactive/2018/07/4thOfJuly/dist/images/fuse.png") no-repeat;
-      background-size: auto 100%;
-
-      @media screen and (min-width: 768px) {
-        width: 300px;
-        right: -22px;
-      }
-    }
-  }
-}
-
 .fireworksWrapper {
   position: relative;
-  margin-top: 120px;
+  // margin-top: 120px;
 
   > p {
     line-height: 0;
     margin: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    text-decoration: underline;
+  }
+}
+
+.firework-contraint {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .firework-last & {
+    position: relative;
+    max-width: 800px;
+  }
+
+  .firework-first & {
+    position: relative;
+  }
+}
+
+.firework-first {
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  min-height: 100vh;
+  padding: 100px 40px 120px;
+  color: #fff;
+  font-family: "akkurat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.5em;
+  font-size: 12px;
+  box-sizing: border-box;
+
+  @media screen and (min-width: 400px) {
+    font-size: 18px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 22px;
+    padding-top: 200px;
+  }
+
+  &:before {
+    display: none;
+  }
+  h1 {
+    font-family: "TrimPoster-Slender", "trim-poster", sans-serif;
+    font-size: 70px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    line-height: 1em;
+
+    @media screen and (min-width: 400px) {
+      font-size: 80px;
+      margin-bottom: 30px;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 100px;
+      margin-bottom: 50px;
+    }
+
+    @media screen and (min-width: 1084px) {
+      font-size: 120px;
+    }
+
+    span {
+
+      &.firework-block {
+        font-size: 30px;
+        line-height: 1.5em;
+        font-style: italic;
+        font-family: 'Calligraffitti', cursive;
+        display: block;
+
+        @media screen and (min-width: 400px) {
+          font-size: 32px;
+          max-width: 420px;
+          margin: 0 auto;
+        }
+
+        @media screen and (min-width: 768px) {
+          font-size: 40px;
+        }
+
+        @media screen and (min-width: 1084px) {
+          font-size: 60px;
+          max-width: 630px;
+        }
+      }
+    }
+  }
+
+}
+
+.firework-first-text {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.firework-statue {
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 10px;
+  width: 50%;
+  max-width: 300px;
+  opacity: 0.2;
+
+  @media screen and (min-width: 1084px) {
+    opacity: 0.4;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 400px;
+    max-width: none;
+  }
+}
+
+
+.firework-sam {
+  position: absolute;
+  z-index: 0;
+  top: 300px;
+  right: -30px;
+  width: 40%;
+  opacity: 0.2;
+  transform: rotate(-10deg);
+
+
+  @media screen and (min-width: 768px) {
+    width: 350px;
+    top: 450px;
+  }
+
+  @media screen and (min-width: 1084px) {
+    opacity: 0.4;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 350px;
+    top: 300px;
+    right: 30px;
+  }
+}
+
+.firework-red {
+  color: #e30032;
+}
+
+.firework-blue {
+  color: #195f93;
+}
+
+
+
+.firework-first-cta {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  font-family: "akkurat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  background-color: rgba(0,0,0,0.8);
+  box-sizing: border-box;
+  margin: 0;
+  padding-top: 30px;
+
+  &:after {
+    position: absolute;
+    top: 70px;
+    left: calc(50% - 20px);
+    animation: pulse 2s infinite;
+    display: block;
+    width: 40px;
+    height: 20px;
+    content: "";
+    background: url("/interactive/2018/07/4thOfJuly/dist/images/arrow-down.svg") no-repeat center;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -47,11 +223,54 @@ body {
     padding: 100px 40px 40px;
   }
 
-  .scrollmagic-pin-spacer:first-child & {
-    border-top: 0;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 40px;
+    width: 100%;
+    background: url("/interactive/2018/07/4thOfJuly/dist/images/border.svg") repeat;
+    border-bottom: 0;
   }
 
+  p {
+    font-family: "akkurat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5em;
 
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  h2 {
+    font-family: "TrimPoster-Slender", "trim-poster", sans-serif;
+    font-size: 26px;
+    color: #fff;
+    margin-bottom: 50px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 36px;
+      margin-bottom: 70px;
+    }
+  }
+
+}
+
+
+
+.firework-last {
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+  padding: 50px 40px 40px;
+  color: #fff;
+
+  @media screen and (min-width: 768px) {
+    padding: 100px 40px 150px;
+  }
 
   &:before {
     content: "";
@@ -66,15 +285,142 @@ body {
   }
 
   h2 {
-    font-family: "akkurat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 26px;
+    font-family: "TrimPoster-Slender", "trim-poster", sans-serif;
+    font-size: 50px;
     color: #fff;
     margin-bottom: 50px;
+    text-align: center;
 
     @media screen and (min-width: 768px) {
-      font-size: 36px;
+      font-size: 80px;
       margin-bottom: 70px;
     }
   }
+}
 
+.firework-last-pinned {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.firework-last-list {
+  list-style-type: none;
+  margin-bottom: 30px;
+  padding-left: 0;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 70px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 50px;
+  }
+
+  li {
+    font-family: "akkurat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    display: table;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 22px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      font-size: 26px;
+      line-height: 100px;
+    }
+  }
+
+  span {
+    font-family: "akkurat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+    line-height: 1.25em;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      font-size: 20px;
+    }
+  }
+}
+
+.fireworks-icon {
+  display: table-cell;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  padding: 10px;
+  box-sizing: content-box;
+  max-width: none;
+
+  @media screen and (min-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #fff;
+    padding: 15px;
+  }
+}
+
+.firework-bbq {
+  position: absolute;
+  top: 200px;
+  right: -30px;
+  width: 50%;
+  opacity: 0.2;
+  transform: rotate(-10deg);
+
+
+  @media screen and (min-width: 768px) {
+    top: 300px;
+    width: 350px;
+  }
+
+  @media screen and (min-width: 1084px) {
+    opacity: 0.4;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 350px;
+    right: 30px;
+  }
+}
+
+
+
+.firework-rockets {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  opacity: 0.15;
+
+
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
+
+  @media screen and (min-width: 1084px) {
+    opacity: 0.2;
+  }
+
+  @media screen and (min-width: 1200px) {
+    opacity: 0.4;
+    width: 500px;
+  }
 }

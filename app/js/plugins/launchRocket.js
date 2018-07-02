@@ -13,7 +13,8 @@ var $ = jQuery;
   $.fn.launchRocket.options = {
       rocket: ".rocket",
       static: ".rocket__static",
-      animated: ".rocket__animated"
+      animated: ".rocket__animated",
+      answer: ".rocket-answer"
   };
 
   Neu.launchRocket = {
@@ -28,6 +29,7 @@ var $ = jQuery;
         var self = this;
 
         self.$rocket = self.$container.find(self.options.rocket);
+        self.$answer = self.$container.siblings(self.options.answer);
       },
       bindEvents: function() {
         var self = this;
@@ -36,10 +38,15 @@ var $ = jQuery;
           var container = $(this),
             static = container.find(self.options.static),
             animated = container.find(self.options.animated),
-            url = animated.attr("src");
+            url = animated.attr("src"),
+            answer = $(self.options.answer),
+            color = static.attr("data-color"),
+            text = static.attr("data-text");
 
           container.on("click", function() {
             var timeout = 0;
+
+            answer.hide();
 
             static.css("opacity", 0);
             animated.show();
@@ -52,13 +59,18 @@ var $ = jQuery;
 
 
             setTimeout( function() {
-            }, 5500);
+              answer.fadeIn();
+              $(answer).text(text);
+              $(answer).css("color", color);
+            }, 3500);
 
             setTimeout( function() {
               static.css("opacity", 1);
               animated.attr("src", " ");
               animated.hide();
+              answer.fadeOut();
             }, 6000);
+
           });
         });
       }

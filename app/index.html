@@ -3,14 +3,9 @@
 <head>
     <title>4th of July</title>
     <link rel="stylesheet" href="css/styles.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://news.northeastern.edu/viz-libraries/leaflet.js"></script>
-    <script src="https://news.northeastern.edu/viz-libraries/crossfilter.js"></script>
-    <script src="https://news.northeastern.edu/viz-libraries/d3.min.js"></script>
-    <script src="https://news.northeastern.edu/viz-libraries/queue.min.js"></script>
-    <script src="https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/library/mapbox-gl.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.1/ScrollMagic.js"></script>
     <script src="js/library/jquery.gsap.min.js"></script>
@@ -24,130 +19,149 @@
 
 <body>
 
-  <div class="fireworksWrapper">
+  &nbsp;
+<div class="fireworksWrapper">
+<div class="firework-first"><img class="firework-statue" src="/interactive/2018/07/4thOfJuly/dist/images/statue.svg" />
+<img class="firework-sam" src="/interactive/2018/07/4thOfJuly/dist/images/uncle-sam.svg" />
+<div class="firework-contraint">
+<h1><span class="firework-block">Everything you want to know about fireworks this</span>Fourth of July</h1>
+<div class="firework-first-text">
 
-    <!-- <div class="pinned-content first">
-      <p>Intro slide?</p>
-    </div> -->
+Fireworks bring Independence Day celebrations to new heights. But today’s complex aerial displays would likely be unrecognizable to the people who invented fireworks. Explore their humble beginnings and what makes them pop with this interactive explainer.
 
-    <div class="pinned-content second">
-      <h2>The history of fireworks</h2>
-    </div>
+</div>
+</div>
+<p class="firework-first-cta">Scroll to explore</p>
 
-    <div id="fireworksScience">
-      <div class="firework-contraint">
+</div>
+<div class="fireworks-history">
+<h2>The history of fireworks</h2>
+<div id="fireworks-history-one" class="fireworks-history__slide">
+<div class="fireworks-history__year"><span class="fireworks-history__year-line"></span><span>600 - 900 A.D.</span></div>
+<div class="firework-contraint">
+<div class="firework-history__text">
 
+<span class="firework-history-source">source: <a href="https://www.history.com/news/fireworks-vibrant-history">history.com</a></span>At some point between 600 and 900 A.D., Chinese alchemists mixed together saltpeter (potassium nitrate, then a common kitchen seasoning), charcoal, sulfur and other ingredients, unwittingly yielding an early form of gunpowder. The alchemists began stuffing the volatile substance into bamboo shoots that were then thrown into the fire to produce a loud blast. The first fireworks were born.
 
-        <div class="science-pinned">
-          <h2>How are fireworks made and how do they work?</h2>
-          <p class="firework-info-text">Aerial fireworks are usually manufactured as a shell that is made up of four parts. The container consists of pasted paper. A timed fuse allows the shell to reach the desired altitude before exploding. A bursting charge made of black powder (like a firecracker) is at the center of the shell. Around the black powder are "stars" in various patterns. These contain metals such as copper, barium and strontium which provide the colors of the fireworks</p>
-          <div class="firework-info">
-            <img src="/interactive/2018/07/4thOfJuly/dist/images/info.svg" alt="How are fireworks made" />
-            <div class="science-info science-info1"></div>
-            <div class="science-info science-info2"></div>
-            <div class="science-info science-info3"></div>
-            <div class="science-info science-info4"></div>
-            <div class="science-info science-info5"></div>
-            <div class="science-info science-info6"></div>
-            <div class="science-info science-info7"></div>
-          </div>
-        </div>
+Soon, paper tubes came to replace the bamboo stalks, and by the 10th century, crafters of fireworks? had begun attaching firecrackers to arrows that rained down on their adversaries during military engagements. Used outside the field of battle, the same technology allowed fireworks masters to put on the first aerial displays.
 
-        <div class="scienceTrigger" id="science1">1</div>
-        <div class="scienceTrigger" id="science2">2</div>
-        <div class="scienceTrigger" id="science3">3</div>
-        <div class="scienceTrigger" id="science4">4</div>
-        <div class="scienceTrigger" id="science5">5</div>
-        <div class="scienceTrigger" id="science6">6</div>
-        <div class="scienceTrigger" id="science7">7</div>
-      </div>
-    </div>
+</div>
+</div>
+</div>
+<div id="fireworks-history-two" class="fireworks-history__slide">
+<div class="fireworks-history__year"><span class="fireworks-history__year-line"></span><span>1200 A.D.</span></div>
+<div class="firework-contraint">
+<div class="firework-history__text">
 
-    <div id="parallaxWrapper" class="pinned-content">
-      <div id="parallaxText">
-        <div class="layer2" style="top: 0;"></div>
-      	<div class="layer1" style="top: 100vh;">
-          <div class="rocket-text">Can you guess which metal creates which color?</div>
-          <ul class="rockets">
-            <li class="rocket">
-              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework-red.png" />
-              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-red.gif" />
-              <div class="metal"><span class="metal__number">38</span>Sr<span class="metal__name">Strontium</span></div>
-            </li>
-            <li class="rocket">
-              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework-yellow.png" />
-              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-yellow.gif" />
-              <div class="metal"><span class="metal__number">11</span>Na<span class="metal__name">Sodium</span></div>
-            </li>
-            <li class="rocket">
-              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework-green.png" />
-              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-green.gif" />
-              <div class="metal"><span class="metal__number">56</span>Ba<span class="metal__name">Barium</span></div>
-            </li>
-            <li class="rocket">
-              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework.png" />
-              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework.gif" />
-              <div class="metal"><span class="metal__number">11</span>Al<span class="metal__name">Aluminium</span></div>
-            </li>
-            <li class="rocket">
-              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework-blue.png" />
-              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-blue.gif" />
-              <div class="metal"><span class="metal__number">29</span>Cu<span class="metal__name">Copper</span></div>
-            </li>
-            <li class="rocket">
-              <img class="rocket__static" src="/interactive/2018/07/4thOfJuly/dist/images/firework-orange.png" />
-              <img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-orange.gif" />
-              <div class="metal"><span class="metal__number">20</span>Ca<span class="metal__name">Calcium</span></div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<span class="firework-history-source">source: <a href="https://www.history.com/news/fireworks-vibrant-history">history.com</a></span>In the 13th century, gunpowder samples and formulas began trickling into Europe and Arabia, transported by diplomats, explorers, and Franciscan missionaries. Western scientists, metallurgists, and military leaders threw themselves into making the substance even more potent and building powerful weapons such as cannons and muskets.
 
-    <div class="pinned-content fireworks">
-      <h2>Where to watch 4th of July fireworks in and around Boston</h2>
-      <div class="map-container">
-        <div id="fireworksMap"></div>
-        <div id="list-container"></div>
-      </div>
-    </div>
+In medieval England, fireworks experts were known as firemasters. Their assistants, called “green men” because they wore caps of leaves to protect their heads from sparks, doubled as jesters, entertaining the crowd with jokes as they prepared the displays. It was a dangerous profession at the time, with many green men dying or suffering injuries when detonations went awry.
 
-    <!-- <div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas, justo vitae posuere maximus, velit sapien porttitor dui, sed ornare nisl purus a enim. Morbi luctus pharetra justo, ut faucibus sapien gravida eleifend. Nullam ante sapien, hendrerit in posuere eu, blandit egestas diam. Aliquam euismod ante vel accumsan varius. Integer lacinia malesuada quam in malesuada. Phasellus fermentum leo ultrices, pulvinar dolor ut, cursus magna. Suspendisse ullamcorper sem in orci ornare, nec rutrum ante ultrices. Mauris ultricies cursus ex, sit amet venenatis felis vestibulum non.</p>
+</div>
+</div>
+</div>
+<div id="fireworks-history-three" class="fireworks-history__slide">
+<div class="fireworks-history__year"><span class="fireworks-history__year-line"></span><span>1400 - 1800 A.D.</span></div>
+<div class="firework-contraint">
+<div class="firework-history__text">
 
-      <p>Nulla lacinia lorem et mi pellentesque egestas. Mauris in posuere orci, ut dignissim lacus. Ut nec tincidunt lorem, non imperdiet mi. Phasellus accumsan vulputate venenatis. Suspendisse ac velit vel risus volutpat rutrum. Curabitur dictum aliquam nisi, vitae interdum sem condimentum quis. Nam aliquet posuere mauris, id ultrices nibh tempor a. Vestibulum auctor erat eget leo interdum, vitae dignissim arcu commodo. Nulla convallis est et elementum luctus. Ut sem enim, efficitur eget iaculis vel, sagittis fermentum odio.</p>
+<span class="firework-history-source">source: <a href="https://www.history.com/news/fireworks-vibrant-history">history.com</a></span>By the time of the Renaissance, pyrotechnic schools were training fireworks artists across Europe, particularly in Italy, which became famous for its elaborate and colorful displays. It was the Italians who in the 1830s became the first to incorporate trace amounts of metals and other additives, creating the bright, multihued sparks and sunbursts seen in contemporary fireworks shows.
 
-      <p>Mauris lorem lorem, mattis id ante ut, dictum viverra enim. Proin accumsan ligula enim, sed venenatis felis ullamcorper ut. Sed vitae ligula ligula. Morbi rhoncus augue in dignissim venenatis. Duis mollis turpis ligula, eu viverra urna dignissim id. Donec magna felis, porttitor nec velit et, sodales posuere est. Nulla euismod, tortor eu aliquam consectetur, eros magna condimentum massa, vel ultricies mauris libero at felis.</p>
+In England, the earliest recorded display took place on Henry VII’s wedding day in 1486. French kings regularly put on spectacular displays at Versailles and other palaces, while Czar Peter the Great of Russia arranged a five-hour pyrotechnic extravaganza to mark the birth of his son.
 
-      <p>Proin accumsan est sed nunc sollicitudin dictum. Vivamus non fringilla nisi. Praesent nec ligula dui. Donec non convallis enim, blandit interdum libero. Pellentesque sodales sem ullamcorper leo viverra mattis. Curabitur suscipit auctor nunc, at scelerisque tortor efficitur eget. Curabitur tincidunt, risus quis auctor interdum, massa sem venenatis odio, semper imperdiet justo felis eu ligula. Quisque a sollicitudin leo. Proin quis tortor mauris. Aenean ac mi vehicula, pretium sem maximus, tristique diam. In a lacus fringilla, semper sapien quis, sollicitudin lorem. Etiam feugiat neque vitae mauris hendrerit, a facilisis nunc rhoncus. Fusce ut magna ipsum.</p>
+Settlers brought fireworks to the new world and on July 3, 1777, fireworks displays commemorated the fledgling country's first anniversary, just as they have each subsequent one.
 
-      <p>Sed lobortis ante quam, in vestibulum tellus porta in. Nulla sed dolor eu mauris maximus finibus eget vel magna. Proin id sem elementum, fringilla sapien sed, vestibulum quam. Nullam dapibus sem id dui eleifend facilisis. Sed ac faucibus ante. Sed luctus maximus commodo. Aliquam lectus ante, scelerisque quis ligula a, vestibulum tincidunt est.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="fireworksScience">
+<div class="firework-contraint">
+<div class="science-pinned">
+<h2>How do fireworks work?</h2>
+<p class="firework-info-text"><button class="fireworks-close"></button><span>Aerial fireworks are usually manufactured as a shell that is made up of four parts. The container consists of pasted paper. A timed fuse allows the shell to reach the desired altitude before exploding. A bursting charge made of black powder (like a firecracker) is at the center of the shell. Around the black powder are "stars" in various patterns. These contain metals such as copper, barium, and strontium, which provide the colors of the fireworks. <a href="https://news.northeastern.edu/2017/07/03/the-science-behind-fireworks/">Northeastern professor Michael Polastri explains the science behind fireworks in greater detail here</a>.</span></p>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas, justo vitae posuere maximus, velit sapien porttitor dui, sed ornare nisl purus a enim. Morbi luctus pharetra justo, ut faucibus sapien gravida eleifend. Nullam ante sapien, hendrerit in posuere eu, blandit egestas diam. Aliquam euismod ante vel accumsan varius. Integer lacinia malesuada quam in malesuada. Phasellus fermentum leo ultrices, pulvinar dolor ut, cursus magna. Suspendisse ullamcorper sem in orci ornare, nec rutrum ante ultrices. Mauris ultricies cursus ex, sit amet venenatis felis vestibulum non.</p>
+<div class="firework-info">
 
-      <p>Nulla lacinia lorem et mi pellentesque egestas. Mauris in posuere orci, ut dignissim lacus. Ut nec tincidunt lorem, non imperdiet mi. Phasellus accumsan vulputate venenatis. Suspendisse ac velit vel risus volutpat rutrum. Curabitur dictum aliquam nisi, vitae interdum sem condimentum quis. Nam aliquet posuere mauris, id ultrices nibh tempor a. Vestibulum auctor erat eget leo interdum, vitae dignissim arcu commodo. Nulla convallis est et elementum luctus. Ut sem enim, efficitur eget iaculis vel, sagittis fermentum odio.</p>
-
-      <p>Mauris lorem lorem, mattis id ante ut, dictum viverra enim. Proin accumsan ligula enim, sed venenatis felis ullamcorper ut. Sed vitae ligula ligula. Morbi rhoncus augue in dignissim venenatis. Duis mollis turpis ligula, eu viverra urna dignissim id. Donec magna felis, porttitor nec velit et, sodales posuere est. Nulla euismod, tortor eu aliquam consectetur, eros magna condimentum massa, vel ultricies mauris libero at felis.</p>
-
-      <p>Proin accumsan est sed nunc sollicitudin dictum. Vivamus non fringilla nisi. Praesent nec ligula dui. Donec non convallis enim, blandit interdum libero. Pellentesque sodales sem ullamcorper leo viverra mattis. Curabitur suscipit auctor nunc, at scelerisque tortor efficitur eget. Curabitur tincidunt, risus quis auctor interdum, massa sem venenatis odio, semper imperdiet justo felis eu ligula. Quisque a sollicitudin leo. Proin quis tortor mauris. Aenean ac mi vehicula, pretium sem maximus, tristique diam. In a lacus fringilla, semper sapien quis, sollicitudin lorem. Etiam feugiat neque vitae mauris hendrerit, a facilisis nunc rhoncus. Fusce ut magna ipsum.</p>
-
-      <p>Sed lobortis ante quam, in vestibulum tellus porta in. Nulla sed dolor eu mauris maximus finibus eget vel magna. Proin id sem elementum, fringilla sapien sed, vestibulum quam. Nullam dapibus sem id dui eleifend facilisis. Sed ac faucibus ante. Sed luctus maximus commodo. Aliquam lectus ante, scelerisque quis ligula a, vestibulum tincidunt est.</p>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas, justo vitae posuere maximus, velit sapien porttitor dui, sed ornare nisl purus a enim. Morbi luctus pharetra justo, ut faucibus sapien gravida eleifend. Nullam ante sapien, hendrerit in posuere eu, blandit egestas diam. Aliquam euismod ante vel accumsan varius. Integer lacinia malesuada quam in malesuada. Phasellus fermentum leo ultrices, pulvinar dolor ut, cursus magna. Suspendisse ullamcorper sem in orci ornare, nec rutrum ante ultrices. Mauris ultricies cursus ex, sit amet venenatis felis vestibulum non.</p>
-
-      <p>Nulla lacinia lorem et mi pellentesque egestas. Mauris in posuere orci, ut dignissim lacus. Ut nec tincidunt lorem, non imperdiet mi. Phasellus accumsan vulputate venenatis. Suspendisse ac velit vel risus volutpat rutrum. Curabitur dictum aliquam nisi, vitae interdum sem condimentum quis. Nam aliquet posuere mauris, id ultrices nibh tempor a. Vestibulum auctor erat eget leo interdum, vitae dignissim arcu commodo. Nulla convallis est et elementum luctus. Ut sem enim, efficitur eget iaculis vel, sagittis fermentum odio.</p>
-
-      <p>Mauris lorem lorem, mattis id ante ut, dictum viverra enim. Proin accumsan ligula enim, sed venenatis felis ullamcorper ut. Sed vitae ligula ligula. Morbi rhoncus augue in dignissim venenatis. Duis mollis turpis ligula, eu viverra urna dignissim id. Donec magna felis, porttitor nec velit et, sodales posuere est. Nulla euismod, tortor eu aliquam consectetur, eros magna condimentum massa, vel ultricies mauris libero at felis.</p>
-
-      <p>Proin accumsan est sed nunc sollicitudin dictum. Vivamus non fringilla nisi. Praesent nec ligula dui. Donec non convallis enim, blandit interdum libero. Pellentesque sodales sem ullamcorper leo viverra mattis. Curabitur suscipit auctor nunc, at scelerisque tortor efficitur eget. Curabitur tincidunt, risus quis auctor interdum, massa sem venenatis odio, semper imperdiet justo felis eu ligula. Quisque a sollicitudin leo. Proin quis tortor mauris. Aenean ac mi vehicula, pretium sem maximus, tristique diam. In a lacus fringilla, semper sapien quis, sollicitudin lorem. Etiam feugiat neque vitae mauris hendrerit, a facilisis nunc rhoncus. Fusce ut magna ipsum.</p>
-
-      <p>Sed lobortis ante quam, in vestibulum tellus porta in. Nulla sed dolor eu mauris maximus finibus eget vel magna. Proin id sem elementum, fringilla sapien sed, vestibulum quam. Nullam dapibus sem id dui eleifend facilisis. Sed ac faucibus ante. Sed luctus maximus commodo. Aliquam lectus ante, scelerisque quis ligula a, vestibulum tincidunt est.</p>
-    </div> -->
-  </div>
+<img src="/interactive/2018/07/4thOfJuly/dist/images/info.svg" alt="How are fireworks made" />
+<div class="science-info science-info1"></div>
+<div class="science-info science-info2"></div>
+<div class="science-info science-info3"></div>
+<div class="science-info science-info4"></div>
+<div class="science-info science-info5"></div>
+<div class="science-info science-info6"></div>
+<div class="science-info science-info7"></div>
+</div>
+</div>
+<div class="scienceTrigger" id="science1">1</div>
+<div class="scienceTrigger" id="science2">2</div>
+<div class="scienceTrigger" id="science3">3</div>
+<div class="scienceTrigger" id="science4">4</div>
+<div class="scienceTrigger" id="science5">5</div>
+<div class="scienceTrigger" id="science6">6</div>
+<div class="scienceTrigger" id="science7">7</div>
+</div>
+</div>
+<div id="parallaxWrapper" class="pinned-content">
+<div id="parallaxText">
+<div class="layer2" style="top: 0;"></div>
+<div class="layer1" style="top: 100vh;">
+<div class="rocket-text">Can you guess which metal creates which color?
+<span class="rocket-text__note">(Click the rockets to reveal the answer)</span></div>
+<ul class="rockets">
+ 	<li class="rocket"><img class="rocket__static" data-color="#ff0000" data-text="Strontium = Red" src="/interactive/2018/07/4thOfJuly/dist/images/firework-red.png" />
+<img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-red.gif" />
+<div class="metal"><span class="metal__number">38</span>Sr<span class="metal__name">Strontium</span></div></li>
+ 	<li class="rocket"><img class="rocket__static" data-color="#fed054" data-text="Sodium = Yellow" src="/interactive/2018/07/4thOfJuly/dist/images/firework-yellow.png" />
+<img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-yellow.gif" />
+<div class="metal"><span class="metal__number">11</span>Na<span class="metal__name">Sodium</span></div></li>
+ 	<li class="rocket"><img class="rocket__static" data-color="#00af42" data-text="Barium = Green" src="/interactive/2018/07/4thOfJuly/dist/images/firework-green.png" />
+<img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-green.gif" />
+<div class="metal"><span class="metal__number">56</span>Ba<span class="metal__name">Barium</span></div></li>
+ 	<li class="rocket"><img class="rocket__static" data-color="#ffffff" data-text="Aluminium = White" src="/interactive/2018/07/4thOfJuly/dist/images/firework.png" />
+<img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework.gif" />
+<div class="metal"><span class="metal__number">11</span>Al<span class="metal__name">Aluminium</span></div></li>
+ 	<li class="rocket"><img class="rocket__static" data-color="#005ab8" data-text="Copper = Blue" src="/interactive/2018/07/4thOfJuly/dist/images/firework-blue.png" />
+<img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-blue.gif" />
+<div class="metal"><span class="metal__number">29</span>Cu<span class="metal__name">Copper</span></div></li>
+ 	<li class="rocket"><img class="rocket__static" data-color="#ff6500" data-text="Calcium = Orange" src="/interactive/2018/07/4thOfJuly/dist/images/firework-orange.png" />
+<img class="rocket__animated" src="/interactive/2018/07/4thOfJuly/dist/images/firework-orange.gif" />
+<div class="metal"><span class="metal__number">20</span>Ca<span class="metal__name">Calcium</span></div></li>
+</ul>
+<div class="rocket-answer">text</div>
+</div>
+</div>
+</div>
+<div class="firework-last">
+<div class="firework-last-pinned"><img class="firework-bbq" src="/interactive/2018/07/4thOfJuly/dist/images/bbq.svg" />
+<img class="firework-rockets" src="/interactive/2018/07/4thOfJuly/dist/images/fireworks-rockets.png" /></div>
+<div class="firework-contraint">
+<h2><span class="firework-blue">H</span><span class="firework-red">a</span>v<span class="firework-blue">e</span><span class="firework-red"> a</span> s<span class="firework-blue">a</span><span class="firework-red">f</span>e <span class="firework-blue">F</span><span class="firework-red">o</span>u<span class="firework-blue">r</span><span class="firework-red">t</span>h <span class="firework-blue">o</span><span class="firework-red">f</span> J<span class="firework-blue">u</span><span class="firework-red">l</span>y<span class="firework-blue">!</span></h2>
+<ul class="firework-last-list">
+ 	<li>When lighting fireworks:</li>
+ 	<li><img class="fireworks-icon" src="/interactive/2018/07/4thOfJuly/dist/images/fire-extinguisher.svg" /><span>Keep a supply of water close by as a precaution.</span></li>
+ 	<li><img class="fireworks-icon" src="/interactive/2018/07/4thOfJuly/dist/images/goggles.svg" /><span>Wear eye protection when lighting fireworks.</span></li>
+ 	<li><img class="fireworks-icon" src="/interactive/2018/07/4thOfJuly/dist/images/partyhat.svg" /><span>Never pick up or try to relight a “dud”.</span></li>
+ 	<li><img class="fireworks-icon" src="/interactive/2018/07/4thOfJuly/dist/images/rocket-icon.svg" /><span>Aim for the sky. Never throw or point fireworks at people or animals.</span></li>
+ 	<li><img class="fireworks-icon" src="/interactive/2018/07/4thOfJuly/dist/images/outdoors.svg" /><span>Only use fireworks outside.</span></li>
+</ul>
+<ul class="firework-last-list">
+ 	<li>Barbecue:</li>
+ 	<li><img class="fireworks-icon" src="/interactive/2018/07/4thOfJuly/dist/images/housefire.svg" /><span>Never grill indoors.</span></li>
+ 	<li><img class="fireworks-icon" src="/interactive/2018/07/4thOfJuly/dist/images/treefire.svg" /><span>Keep the grill away from houses, trees, and other things that could catch fire.</span></li>
+ 	<li><img class="fireworks-icon" src="/interactive/2018/07/4thOfJuly/dist/images/flammable.svg" /><span>Never throw starter fluid on a fire that has already been ignited.</span></li>
+ 	<li><img class="fireworks-icon" src="/interactive/2018/07/4thOfJuly/dist/images/bbq-icon.svg" /><span><a href="https://news.northeastern.edu/2017/06/30/chillin-and-grillin/">Here</a> are some great barbecue tips.</span></li>
+</ul>
+<ul class="firework-last-list">
+ 	<li>And don't forget:</li>
+ 	<li><img class="fireworks-icon" src="/interactive/2018/07/4thOfJuly/dist/images/sunscreen.svg" /><span>Wear sunscreen!</span></li>
+</ul>
+</div>
+</div>
+</div>
 
   <!--build:js js/main.min.js -->
   <script src="js/plugins/launchRocket.js"></script>
-  <script src="js/plugins/fireworksMap.js"></script>
   <script src="js/plugins/scrollmagicControls.js"></script>
   <!--endbuild-->
 
